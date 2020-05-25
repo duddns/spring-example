@@ -1,0 +1,80 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '13'
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    runtimeOnly 'com.h2database:h2'
+    //runtimeOnly 'mysql:mysql-connector-java'
+    
+    // json type
+    implementation 'com.vladmihalcea:hibernate-types-52:2.9.10'
+    
+    // querydsl
+    implementation 'com.querydsl:querydsl-jpa'
+    
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    /*
+     * STS4 4.6.0 업데이트 후
+     * 테스트코드 개발 실행시 아래 오류 발생하여 임시 조치 취함
+     * https://gist.github.com/duddns/29cdfb48b2f9f46973ed93980254c644
+    */
+    testRuntimeOnly 'org.junit.platform:junit-platform-runner'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+// querydsl
+def querydslDir = "$buildDir/generated/querydsl"
+
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+
+sourceSets {
+    main.java.srcDir querydslDir
+}
+
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+

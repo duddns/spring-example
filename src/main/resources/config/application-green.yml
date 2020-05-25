@@ -1,0 +1,5 @@
+spring:
+  profiles: green
+server:
+  port: 8082
+
