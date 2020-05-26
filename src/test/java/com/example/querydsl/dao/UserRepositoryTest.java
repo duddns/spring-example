@@ -12,9 +12,9 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.example.querydsl.model.User;
 
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles(value = "local")
+@ActiveProfiles(value = "unit-test")
 public class UserRepositoryTest {
 
     @Autowired

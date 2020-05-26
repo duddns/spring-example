@@ -32,6 +32,9 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     //runtimeOnly 'mysql:mysql-connector-java'
     
+    // envers
+    implementation 'org.hibernate:hibernate-envers:5.4.16.Final'
+    
     // json type
     implementation 'com.vladmihalcea:hibernate-types-52:2.9.10'
     

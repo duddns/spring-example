@@ -3,89 +3,56 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     
-    <property name="SPRING_LOG_FILE" value="./logs/spring.log"/>
-    <property name="APPLICATION_LOG_FILE" value="./logs/application.log"/>
+    <property name="APPLICATION_LOG_FILE" value="${LOG_PATH:-.}/logs/application.log"/>
     
     <include resource="logback/console-appender.xml" />
-    <include resource="logback/spring-file-appender.xml" />
     <include resource="logback/application-file-appender.xml" />
     
-    <springProfile name="default, local">
-        <logger name="org.springframework" level="INFO">
+    <springProfile name="default | unit-test">
+        <logger name="org.springframework" level="INFO" additivity="false">
             <appender-ref ref="CONSOLE" />
         </logger>
-        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG">
+        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG" additivity="false">
+            <appender-ref ref="CONSOLE" />
+        </logger>
+        <logger name="org.springframework.web.client.RestTemplate" level="DEBUG" additivity="false">
             <appender-ref ref="CONSOLE" />
         </logger>
          
-        <logger name="org.hibernate.SQL" level="DEBUG">
+        <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
             <appender-ref ref="CONSOLE" />
         </logger>
-        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE">
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
             <appender-ref ref="CONSOLE" />
         </logger>
         
-        <logger name="co.jobis" level="DEBUG">
+        <logger name="com.example" level="DEBUG" additivity="false">
             <appender-ref ref="CONSOLE" />
         </logger>
     </springProfile>
     
     <springProfile name="dev">
-        <logger name="org.springframework" level="INFO">
-            <appender-ref ref="SPRING_FILE" />
+        <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="APPLICATION_FILE" />
         </logger>
-        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="INFO">
+        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG" additivity="false">
+            <appender-ref ref="APPLICATION_FILE" />
+        </logger>
+        <logger name="org.springframework.web.client.RestTemplate" level="DEBUG" additivity="false">
             <appender-ref ref="APPLICATION_FILE" />
         </logger>
          
-        <logger name="org.hibernate.SQL" level="INFO">
+        <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
             <appender-ref ref="APPLICATION_FILE" />
         </logger>
-        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="INFO">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-        
-        <logger name="co.jobis" level="DEBUG">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-    </springProfile>
-    
-    <springProfile name="test">
-        <logger name="org.springframework" level="INFO">
-            <appender-ref ref="SPRING_FILE" />
-        </logger>
-        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="INFO">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-         
-        <logger name="org.hibernate.SQL" level="INFO">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="INFO">
+        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
             <appender-ref ref="APPLICATION_FILE" />
         </logger>
         
-        <logger name="co.jobis" level="DEBUG">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-    </springProfile>
-    
-    <springProfile name="prod">
-        <logger name="org.springframework" level="INFO">
-            <appender-ref ref="SPRING_FILE" />
-        </logger>
-        <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="INFO">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-         
-        <logger name="org.hibernate.SQL" level="WARN">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-        <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="INFO">
-            <appender-ref ref="APPLICATION_FILE" />
-        </logger>
-        
-        <logger name="co.jobis" level="WARN">
+        <logger name="com.example" level="DEBUG" additivity="false">
             <appender-ref ref="APPLICATION_FILE" />
         </logger>
     </springProfile>

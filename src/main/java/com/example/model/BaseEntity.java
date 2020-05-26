@@ -15,9 +15,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Getter;
 
+@Getter
 @MappedSuperclass
 @EntityListeners(value = { AuditingEntityListener.class })
-@Getter
 public abstract class BaseEntity {
 
     @Id

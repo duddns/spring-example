@@ -14,9 +14,9 @@ import com.example.aggregate.model.LineItem;
 import com.example.aggregate.model.Order;
 import com.example.aggregate.model.ShippingAddress;
 
-@DataJpaTest
+@DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles(value = "local")
+@ActiveProfiles(value = "unit-test")
 public class OrderRepositoryTest {
 
     @Autowired
