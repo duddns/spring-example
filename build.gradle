@@ -2,7 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+    id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
+    id 'jacoco'
 }
 
 group = 'com.example'
@@ -55,6 +56,24 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+    
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/Q**'
+            ])
+        }))
+    }
 }
 
 
