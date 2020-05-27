@@ -25,6 +25,7 @@ public class ShippingAddress extends BaseEntity {
     @Column(name = "address")
     private String address;
     
+    @Getter(value = AccessLevel.NONE)
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;

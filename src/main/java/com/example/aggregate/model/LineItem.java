@@ -28,6 +28,7 @@ public class LineItem extends BaseEntity {
     @Column(name = "price")
     private Long price;
     
+    @Getter(value = AccessLevel.NONE)
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
