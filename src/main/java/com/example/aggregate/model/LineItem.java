@@ -35,15 +35,13 @@ public class LineItem extends BaseEntity {
     
     
     @Builder
-    public LineItem(String productId, String name, Long price, Order order) {
+    public LineItem(String productId, String name, Long price) {
         Assert.notNull(productId, "productId must not be null");
         Assert.notNull(name, "name must not be null");
         Assert.notNull(price, "price must not be null");
-        //Assert.notNull(order, "order must not be null");
         
         this.productId = productId;
         this.name = name;
         this.price = price;
-        this.order = order;
     }
 }

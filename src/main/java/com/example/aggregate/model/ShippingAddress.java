@@ -32,13 +32,11 @@ public class ShippingAddress extends BaseEntity {
     
     
     @Builder
-    public ShippingAddress(String zipCode, String address, Order order) {
+    public ShippingAddress(String zipCode, String address) {
         Assert.notNull(zipCode, "zipCode must not be null");
         Assert.notNull(address, "address must not be null");
-        //Assert.notNull(order, "order must not be null");
         
         this.zipCode = zipCode;
         this.address = address;
-        this.order = order;
     }
 }
