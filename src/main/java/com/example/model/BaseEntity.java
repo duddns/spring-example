@@ -32,4 +32,30 @@ public abstract class BaseEntity {
     @LastModifiedDate
     @Column(name = "last_modified_at", nullable = false, updatable = false)
     private LocalDateTime updatedAt;
+    
+    
+    @Override
+    public boolean equals(final Object o) {
+        if (o == this) {
+            return true;
+        }
+        
+        if (! (o instanceof BaseEntity)) {
+            return false;
+        }
+        
+        BaseEntity other = (BaseEntity) o;
+        
+        final Object this$id = this.id;
+        final Object other$id = other.getId();
+        
+        if (null == this$id || null == other$id) {
+            return false;
+        }
+        if (!this$id.equals(other$id)) {
+            return false;
+        }
+        
+        return true;
+    }
 }
