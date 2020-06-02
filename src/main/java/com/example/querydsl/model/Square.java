@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "users")
-public class User extends BaseEntity {
+@Entity(name = "squares")
+public class Square extends BaseEntity {
 
     @Column(name = "username", unique = true)
     private String username;
@@ -23,7 +23,7 @@ public class User extends BaseEntity {
     
     
     @Builder
-    public User(String username, String password) {
+    public Square(String username, String password) {
         this.username = username;
         this.password = password;
     }

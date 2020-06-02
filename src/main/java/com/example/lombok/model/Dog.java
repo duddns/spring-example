@@ -16,7 +16,7 @@ import lombok.NonNull;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = true)
 @Entity(name = "humans")
-public class Human extends BaseEntity {
+public class Dog extends BaseEntity {
 
     @NonNull
     @Column(name = "name")
@@ -24,7 +24,7 @@ public class Human extends BaseEntity {
     
     
     @Builder
-    public Human(String name) {
+    public Dog(String name) {
         this.name = name;
     }
 }

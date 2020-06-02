@@ -32,8 +32,12 @@ dependencies {
         exclude group:'org.springframework.boot', module:'spring-boot-starter-tomcat'
     }
     implementation 'org.springframework.boot:spring-boot-starter-undertow'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     
     runtimeOnly 'com.h2database:h2'
+    
+    // jwt
+    implementation 'com.auth0:java-jwt:3.10.3'
     
     // envers
     implementation 'org.hibernate:hibernate-envers:5.4.16.Final'

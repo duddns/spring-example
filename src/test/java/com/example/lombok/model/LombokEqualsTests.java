@@ -10,172 +10,172 @@ import org.springframework.test.util.ReflectionTestUtils;
 public class LombokEqualsTests {
 
     @Test
-    public void test_Person_id_null() {
-        Person person1 = null;
-        Person person2 = null;
+    public void test_cat_id_null() {
+        Cat cat1 = null;
+        Cat cat2 = null;
         
-        person1 = Person.builder()
+        cat1 = Cat.builder()
                 .build();
-        person2 = Person.builder()
+        cat2 = Cat.builder()
                 .build();
         
-        assertThat(person1.getId()).isEqualTo(null);
-        assertThat(person2.getId()).isEqualTo(null);
-        assertThat(person1.equals(person2)).isFalse();
+        assertThat(cat1.getId()).isEqualTo(null);
+        assertThat(cat2.getId()).isEqualTo(null);
+        assertThat(cat1.equals(cat2)).isFalse();
     }
     
     @Test
-    public void test_Person_id_다른경우() {
-        Person person1 = null;
-        Person person2 = null;
+    public void test_cat_id_다른경우() {
+        Cat cat1 = null;
+        Cat cat2 = null;
         
-        person1 = Person.builder()
+        cat1 = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person1, "id", 1L);
-        person2 = Person.builder()
+        ReflectionTestUtils.setField(cat1, "id", 1L);
+        cat2 = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person2, "id", 2L);
+        ReflectionTestUtils.setField(cat2, "id", 2L);
         
-        assertThat(person1.getId()).isEqualTo(1L);
-        assertThat(person2.getId()).isEqualTo(2L);
-        assertThat(person1.equals(person2)).isFalse();
+        assertThat(cat1.getId()).isEqualTo(1L);
+        assertThat(cat2.getId()).isEqualTo(2L);
+        assertThat(cat1.equals(cat2)).isFalse();
         
-        person1 = Person.builder()
+        cat1 = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person1, "id", 1L);
-        person2 = Person.builder()
+        ReflectionTestUtils.setField(cat1, "id", 1L);
+        cat2 = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person2, "id", 1L);
+        ReflectionTestUtils.setField(cat2, "id", 1L);
         
-        assertThat(person1.getId()).isEqualTo(1L);
-        assertThat(person2.getId()).isEqualTo(1L);
-        assertThat(person1.equals(person2)).isTrue();
+        assertThat(cat1.getId()).isEqualTo(1L);
+        assertThat(cat2.getId()).isEqualTo(1L);
+        assertThat(cat1.equals(cat2)).isTrue();
     }
     
     @Test
-    public void test_Person_id_같은경우() {
-        Person person1 = null;
-        Person person2 = null;
+    public void test_cat_id_같은경우() {
+        Cat cat1 = null;
+        Cat cat2 = null;
         
-        person1 = Person.builder()
+        cat1 = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person1, "id", 1L);
-        person2 = Person.builder()
+        ReflectionTestUtils.setField(cat1, "id", 1L);
+        cat2 = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person2, "id", 1L);
+        ReflectionTestUtils.setField(cat2, "id", 1L);
         
-        assertThat(person1.getId()).isEqualTo(1L);
-        assertThat(person2.getId()).isEqualTo(1L);
-        assertThat(person1.equals(person2)).isTrue();
+        assertThat(cat1.getId()).isEqualTo(1L);
+        assertThat(cat2.getId()).isEqualTo(1L);
+        assertThat(cat1.equals(cat2)).isTrue();
     }
     
     @Test
-    public void test_Person_이름_다른경우() {
-        Person person1 = null;
-        Person person2 = null;
+    public void test_cat_이름_다른경우() {
+        Cat cat1 = null;
+        Cat cat2 = null;
         
-        person1 = Person.builder()
+        cat1 = Cat.builder()
                 .name("홍길동")
                 .build();
-        ReflectionTestUtils.setField(person1, "id", 1L);
-        person2 = Person.builder()
+        ReflectionTestUtils.setField(cat1, "id", 1L);
+        cat2 = Cat.builder()
                 .name("고길동")
                 .build();
-        ReflectionTestUtils.setField(person2, "id", 1L);
+        ReflectionTestUtils.setField(cat2, "id", 1L);
         
-        assertThat(person1.getId()).isEqualTo(1L);
-        assertThat(person2.getId()).isEqualTo(1L);
-        assertThat(person1.equals(person2)).isFalse();
+        assertThat(cat1.getId()).isEqualTo(1L);
+        assertThat(cat2.getId()).isEqualTo(1L);
+        assertThat(cat1.equals(cat2)).isFalse();
     }
     
     @Test
-    public void test_Person_이름_같은경우() {
-        Person person1 = null;
-        Person person2 = null;
+    public void test_cat_이름_같은경우() {
+        Cat cat1 = null;
+        Cat cat2 = null;
         
-        person1 = Person.builder()
+        cat1 = Cat.builder()
                 .name("홍길동")
                 .build();
-        ReflectionTestUtils.setField(person1, "id", 1L);
-        person2 = Person.builder()
+        ReflectionTestUtils.setField(cat1, "id", 1L);
+        cat2 = Cat.builder()
                 .name("홍길동")
                 .build();
-        ReflectionTestUtils.setField(person2, "id", 1L);
+        ReflectionTestUtils.setField(cat2, "id", 1L);
         
-        assertThat(person1.getId()).isEqualTo(1L);
-        assertThat(person2.getId()).isEqualTo(1L);
-        assertThat(person1.equals(person2)).isTrue();
+        assertThat(cat1.getId()).isEqualTo(1L);
+        assertThat(cat2.getId()).isEqualTo(1L);
+        assertThat(cat1.equals(cat2)).isTrue();
     }
     
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void test_PersonHuman_id_null() {
-        Person person = null;
-        Human human = null;
+    public void test_catdog_id_null() {
+        Cat cat = null;
+        Dog dog = null;
         
-        person = Person.builder()
+        cat = Cat.builder()
                 .build();
-        human = Human.builder()
+        dog = Dog.builder()
                 .build();
         
-        assertThat(person.getId()).isEqualTo(null);
-        assertThat(human.getId()).isEqualTo(null);
-        assertThat(person.equals(human)).isFalse();
+        assertThat(cat.getId()).isEqualTo(null);
+        assertThat(dog.getId()).isEqualTo(null);
+        assertThat(cat.equals(dog)).isFalse();
     }
     
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void test_PersonHuman_id_다른경우() {
-        Person person = null;
-        Human human = null;
+    public void test_catdog_id_다른경우() {
+        Cat cat = null;
+        Dog dog = null;
         
-        person = Person.builder()
+        cat = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person, "id", 1L);
-        human = Human.builder()
+        ReflectionTestUtils.setField(cat, "id", 1L);
+        dog = Dog.builder()
                 .build();
-        ReflectionTestUtils.setField(human, "id", 2L);
+        ReflectionTestUtils.setField(dog, "id", 2L);
         
-        assertThat(person.getId()).isEqualTo(1L);
-        assertThat(human.getId()).isEqualTo(2L);
-        assertThat(person.equals(human)).isFalse();
+        assertThat(cat.getId()).isEqualTo(1L);
+        assertThat(dog.getId()).isEqualTo(2L);
+        assertThat(cat.equals(dog)).isFalse();
     }
     
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void test_PersonHuman_id_같은경우() {
-        Person person = null;
-        Human human = null;
+    public void test_catdog_id_같은경우() {
+        Cat cat = null;
+        Dog dog = null;
         
-        person = Person.builder()
+        cat = Cat.builder()
                 .build();
-        ReflectionTestUtils.setField(person, "id", 1L);
-        human = Human.builder()
+        ReflectionTestUtils.setField(cat, "id", 1L);
+        dog = Dog.builder()
                 .build();
-        ReflectionTestUtils.setField(human, "id", 1L);
+        ReflectionTestUtils.setField(dog, "id", 1L);
         
-        assertThat(person.getId()).isEqualTo(1L);
-        assertThat(human.getId()).isEqualTo(1L);
-        assertThat(person.equals(human)).isFalse();
+        assertThat(cat.getId()).isEqualTo(1L);
+        assertThat(dog.getId()).isEqualTo(1L);
+        assertThat(cat.equals(dog)).isFalse();
     }
     
     @SuppressWarnings("unlikely-arg-type")
     @Test
-    public void test_PersonHuman_name_같은경우() {
-        Person person = null;
-        Human human = null;
+    public void test_catdog_name_같은경우() {
+        Cat cat = null;
+        Dog dog = null;
         
-        person = Person.builder()
+        cat = Cat.builder()
                 .name("홍길동")
                 .build();
-        ReflectionTestUtils.setField(person, "id", 1L);
-        human = Human.builder()
+        ReflectionTestUtils.setField(cat, "id", 1L);
+        dog = Dog.builder()
                 .name("홍길동")
                 .build();
-        ReflectionTestUtils.setField(human, "id", 1L);
+        ReflectionTestUtils.setField(dog, "id", 1L);
         
-        assertThat(person.getId()).isEqualTo(1L);
-        assertThat(human.getId()).isEqualTo(1L);
-        assertThat(person.equals(human)).isFalse();
+        assertThat(cat.getId()).isEqualTo(1L);
+        assertThat(dog.getId()).isEqualTo(1L);
+        assertThat(cat.equals(dog)).isFalse();
     }
 }

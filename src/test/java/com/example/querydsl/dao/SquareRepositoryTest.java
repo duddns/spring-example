@@ -10,15 +10,15 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.example.querydsl.model.User;
+import com.example.querydsl.model.Square;
 
 @DataJpaTest(showSql = false)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles(value = "unit-test")
-public class UserRepositoryTest {
+public class SquareRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private SquareRepository squareRepository;
     
     
     @Test
@@ -28,14 +28,14 @@ public class UserRepositoryTest {
         // when
         
         // then
-        userRepository.save(User.builder()
+        squareRepository.save(Square.builder()
                 .username("username")
                 .password("password")
                 .build());
         
-        List<User> list = userRepository.findAll();
+        List<Square> list = squareRepository.findAll();
         
-        User item = list.get(0);
+        Square item = list.get(0);
         
         assertThat(item.getUsername()).isEqualTo("username");
         assertThat(item.getPassword()).isEqualTo("password");
@@ -44,13 +44,13 @@ public class UserRepositoryTest {
     @Test
     public void test_search() {
         // given
-        userRepository.save(User.builder()
+        squareRepository.save(Square.builder()
                 .username("user1")
                 .password("pass1")
                 .build());
         
         // when
-        User item = userRepository.search("user1");
+        Square item = squareRepository.search("user1");
         
         // then
         assertThat(item.getUsername()).isEqualTo("user1");
