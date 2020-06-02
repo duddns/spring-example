@@ -18,8 +18,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
         .csrf().disable()
         .authorizeRequests()
-            .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
-        .anyRequest().authenticated()
+            .antMatchers(HttpMethod.GET, "/api/hello").authenticated()
         .and()
             .addFilter(new JWTAuthorizationFilter(authenticationManager()))
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
