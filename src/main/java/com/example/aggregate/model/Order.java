@@ -20,7 +20,7 @@ import lombok.Singular;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "orders")
+@Entity(name = "aggregate_orders")
 public class Order extends BaseEntity {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)

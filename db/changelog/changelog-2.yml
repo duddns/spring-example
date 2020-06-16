@@ -1,0 +1,17 @@
+databaseChangeLog:
+- changeSet:
+    id: 2
+    author: young
+    changes:
+    - addColumn:
+        tableName: liquibase_users
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: VARCHAR(255)
+    rollback:
+    - dropColumn:
+        tableName: liquibase_users
+        columnName: name

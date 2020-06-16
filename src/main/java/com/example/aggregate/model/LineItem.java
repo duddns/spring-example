@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "line_items")
+@Entity(name = "aggregate_line_items")
 public class LineItem extends BaseEntity {
 
     @Column(name = "product_id")

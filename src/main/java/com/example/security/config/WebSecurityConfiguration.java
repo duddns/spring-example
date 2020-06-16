@@ -16,11 +16,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-        .csrf().disable()
-        .authorizeRequests()
-            .antMatchers(HttpMethod.GET, "/api/hello").authenticated()
-        .and()
-            .addFilter(new JWTAuthorizationFilter(authenticationManager()))
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            .csrf().disable()
+            .headers().frameOptions().sameOrigin()
+            .and()
+            .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/api/hello").authenticated()
+            .and()
+                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 }

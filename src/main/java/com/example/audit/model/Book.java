@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "books")
+@Entity(name = "audit_books")
 @Audited
 @AuditOverride(forClass = BaseEntity.class)
 public class Book extends BaseEntity {

@@ -1,0 +1,22 @@
+databaseChangeLog:
+- changeSet:
+    id: 1
+    author: young
+    changes:
+    - createTable:
+        tableName: liquibase_users
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: email
+            type: VARCHAR(255)
+    rollback:
+    - dropTable:
+        tableName: liquibase_users
