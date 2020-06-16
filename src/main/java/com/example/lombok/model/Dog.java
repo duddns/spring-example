@@ -15,7 +15,7 @@ import lombok.NonNull;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = true)
-@Entity(name = "humans")
+@Entity(name = "lombok_humans")
 public class Dog extends BaseEntity {
 
     @NonNull

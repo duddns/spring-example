@@ -1,0 +1,8 @@
+# https://docs.liquibase.com/change-types/home.html
+databaseChangeLog:
+- include: 
+    file: changelog-1.yml
+    relativeToChangelogFile: true
+- include: 
+    file: changelog-2.yml
+    relativeToChangelogFile: true

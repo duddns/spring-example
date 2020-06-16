@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "squares")
+@Entity(name = "querydsl_squares")
 public class Square extends BaseEntity {
 
     @Column(name = "username", unique = true)

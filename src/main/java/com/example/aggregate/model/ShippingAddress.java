@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name = "shipping_addresses")
+@Entity(name = "aggregate_shipping_addresses")
 public class ShippingAddress extends BaseEntity {
 
     @Column(name = "zip_code")
