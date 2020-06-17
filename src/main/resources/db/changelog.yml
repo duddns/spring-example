@@ -1,0 +1,11 @@
+# https://docs.liquibase.com/change-types/home.html
+databaseChangeLog:
+- include: 
+    file: changelog/sql/changelog-1.sql
+    relativeToChangelogFile: true
+- include: 
+    file: changelog/sql/changelog-2.sql
+    relativeToChangelogFile: true
+- include: 
+    file: changelog/sql/changelog-3.sql
+    relativeToChangelogFile: true

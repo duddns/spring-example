@@ -48,6 +48,9 @@ dependencies {
     // querydsl
     implementation 'com.querydsl:querydsl-jpa'
     
+    // liquibase
+    implementation 'org.liquibase:liquibase-core'
+    
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
