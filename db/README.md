@@ -1,3 +1,8 @@
+### 기본 설정
+```
+liquibase.properties
+```
+
 ### 변경사항 적용
 ```
 $ ./liquibase update
