@@ -4,3 +4,4 @@
 * Querydsl
 * Agreegate Root
 * Blue/Green Deploy
+* Spring Boot + Liquibase
