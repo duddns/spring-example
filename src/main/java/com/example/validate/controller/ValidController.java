@@ -1,6 +1,7 @@
 package com.example.validate.controller;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.http.ResponseEntity;
@@ -23,11 +24,15 @@ public class ValidController {
     }
     
     
-    @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @Getter
     public static class HelloRequestDto {
         
-        @NotEmpty(message = "message must not be empty")
+        @NotEmpty(message = "email should not be empty")
+        @Email(message = "email should be valid")
+        private String email;
+        
+        @NotEmpty(message = "message should not be empty")
         private String message;
     }
 }
