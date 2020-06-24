@@ -39,13 +39,25 @@ public class Order extends BaseEntity {
         if (null == this.lineItems) {
             this.lineItems = new ArrayList<>();
         }
-        this.lineItems.addAll(lineItems);
+        for (LineItem lineItem : lineItems) {
+            addLineItem(lineItem);
+        }
         
-        this.shippingAddress = shippingAddress;
+        setShippingAddress(shippingAddress);
     }
     
     
+    // 연관관계 편의 메서드
     public void addLineItem(LineItem lineItem) {
         this.lineItems.add(lineItem);
+        
+        lineItem.setOrder(this);
+    }
+    
+    // 연관관계 편의 메서드
+    public void setShippingAddress(ShippingAddress shippingAddress) {
+        this.shippingAddress = shippingAddress;
+        
+        shippingAddress.setOrder(this);
     }
 }

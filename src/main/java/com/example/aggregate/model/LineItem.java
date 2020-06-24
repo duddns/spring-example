@@ -13,22 +13,25 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "aggregate_line_items")
 public class LineItem extends BaseEntity {
 
+    @Getter
     @Column(name = "product_id")
     private String productId;
     
+    @Getter
     @Column(name = "name")
     private String name;
     
+    @Getter
     @Column(name = "price")
     private Long price;
     
-    @Getter(value = AccessLevel.NONE)
+    @Setter(value = AccessLevel.PACKAGE)
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;

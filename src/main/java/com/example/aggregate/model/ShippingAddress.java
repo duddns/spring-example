@@ -3,7 +3,7 @@ package com.example.aggregate.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.springframework.util.Assert;
 
@@ -13,20 +13,22 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name = "aggregate_shipping_addresses")
 public class ShippingAddress extends BaseEntity {
-
+    
+    @Getter
     @Column(name = "zip_code")
     private String zipCode;
     
+    @Getter
     @Column(name = "address")
     private String address;
     
-    @Getter(value = AccessLevel.NONE)
-    @ManyToOne
+    @Setter(value = AccessLevel.PACKAGE)
+    @OneToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
     
